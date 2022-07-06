@@ -36,14 +36,6 @@ const Header = ({Home, Login, Register}) => {
             <Item key="three" icon={<AppstoreOutlined />}>
                 hold
             </Item>
-            <Menu.ItemGroup title="Item Group">
-                <Item key="four" icon={<AppstoreOutlined />}>
-                Navigation Four
-                </Item>
-                <Item key="five" icon={<AppstoreOutlined />}>
-                Navigation Five
-                </Item>
-            </Menu.ItemGroup>
         </SubMenu>
 
        
