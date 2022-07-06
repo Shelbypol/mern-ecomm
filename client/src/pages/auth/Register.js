@@ -1,14 +1,37 @@
 import React, { useState } from "react";
+import { auth } from "../../firebase";
+import { sendSignInLinkToEmail } from "firebase/auth";
+import { toast, ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+
+
 
 const Register = () =>{
 
     const [email,setEmail ] = useState("")
 
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
+        e.preventDefault()
+        const config =  {
+            url : process.env.REACT_APP_REGISTER_URL,
+            handleCodeInApp : true
+        }
+
+        await sendSignInLinkToEmail(auth, email, config)
+        toast(`email is sent to ${email}. Click the link to complete your registration.`)
+
+        // save in local storage
+        window.localStorage.setItem('emailForRegistration', email)
+
+        // clear email state
+        setEmail('')
     }
+    
 
     const registerForm = () => <form onSubmit={handleSubmit}>
         <input type="email" className="form-control" value={email} onChange={e => setEmail(e.target.value) } autoFocus></input>
+        <button type="submit" className="btn btn-primary btn-raised" name="register">register:</button>
+                    <span> {email}</span>
     </form>
 
     return (
@@ -16,16 +39,10 @@ const Register = () =>{
             <div className="row">
                 <div className="col-md-6 offset-md-3">
                     <h4>Register</h4>
+                    <ToastContainer />
                     {registerForm()}
-                    <button type="submit" className="btn btn-primary btn-raised" name="register">register:</button>
-                    <span> {email}</span>
                 </div>
-                {/* <div className="col-md-6 offset-md-9">
-                    
-                </div> */}
-            </div>
-           
-           
+            </div>  
         </div>
     )
 };
