@@ -2,6 +2,7 @@ import { initializeApp } from "firebase/app";
 import { getAuth, GoogleAuthProvider } from "firebase/auth";
 
 
+
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
 
@@ -15,7 +16,6 @@ const firebaseConfig = {
   messagingSenderId: process.env.REACT_APP_FIREBASE_MESSAGING_SENDER_ID,
   appId: process.env.REACT_APP_FIREBASE_APP_ID,
   measurementId: process.env.REACT_APP_FIREBASE_MEASUREMENT_ID
-
 };
 
 // initialize firebase app
@@ -24,6 +24,3 @@ const app = initializeApp(firebaseConfig);
 // export
 export const auth = getAuth(app);
 export const googleAuthProvider = new GoogleAuthProvider();
-
-// export const auth = firebase.auth
-// export const googleAuthProvider = new firebase.auth.googleAuthProvider();

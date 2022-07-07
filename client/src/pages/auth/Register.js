@@ -5,14 +5,14 @@ import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
 
-
 const Register = () =>{
 
-    const [email,setEmail ] = useState("")
+    const [ email, setEmail ] = useState("")
 
     const handleSubmit = async (e) => {
         e.preventDefault()
         const config =  {
+            
             url : process.env.REACT_APP_REGISTER_URL,
             handleCodeInApp : true
         }
